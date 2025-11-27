@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# React 19 useActionState 3D Visualization
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Application Demo](public/demo.webp)
 
-Currently, two official plugins are available:
+This project is an advanced educational application designed to demonstrate the new **React 19 `useActionState` hook**. It features a beautiful, interactive 3D visualization that reacts to the state of a simulated server action.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+-   **React 19 `useActionState`**: Learn how to manage form state, pending status, and server responses using the new hook.
+-   **Interactive 3D Visuals**: A stunning 3D processor (built with Three.js and React Three Fiber) that changes color, size, and animation speed based on the action's status (`idle`, `pending`, `success`, `error`).
+-   **Glassmorphism UI**: A modern, premium user interface with backdrop blur and smooth transitions.
+-   **Simulated Server Action**: A mock server action that simulates network delay and random success/failure outcomes to demonstrate different states.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+-   **React 19** (RC/Canary)
+-   **TypeScript**
+-   **Vite**
+-   **React Three Fiber / Drei** (3D Graphics)
+-   **Tailwind CSS** (Styling)
+-   **Lucide React** (Icons)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+-   Node.js (v18 or higher recommended)
+-   npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+1.  Clone the repository (if applicable) or navigate to the project directory.
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+Start the development server:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open your browser and navigate to `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## How to Use
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Enter Data**: Type any text into the "Input Payload" field in the form.
+2.  **Submit**: Click "Submit Transaction".
+3.  **Observe**:
+    *   **Pending**: The 3D ring turns yellow/orange and spins faster. The core shrinks.
+    *   **Success**: If the action succeeds (random chance), the ring turns green, expands, and returns to normal speed.
+    *   **Error**: If the action fails (random chance or empty input), the ring turns red and stops rotating.
+4.  **Review State**: The form displays the returned message and timestamp from the "server".
+
+## Project Structure
+
+-   `src/App.tsx`: Main application component combining the 3D scene and UI.
+-   `src/actions.ts`: Contains the simulated server action (`processData`) and type definitions.
+-   `src/components/ActionForm.tsx`: The form component utilizing `useActionState`.
+-   `src/components/Processor3D.tsx`: The 3D scene component that visualizes the state.

@@ -1,7 +1,5 @@
 # React 19 useActionState 3D Visualization
 
-![Application Demo](public/demo.webp)
-
 This project is an advanced educational application designed to demonstrate the new **React 19 `useActionState` hook**. It features a beautiful, interactive 3D visualization that reacts to the state of a simulated server action.
 
 ## Features
